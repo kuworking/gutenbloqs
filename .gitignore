@@ -19,10 +19,3 @@ lerna-debug.log
 **/yarn.lock
 **/yarn-error.log
 **/lerna-debug.log
-
-themes/twentynineteen/**
-themes/twentyseventeen/**
-themes/twentysixteen/**
-themes/twentytwenty/**
-
-
