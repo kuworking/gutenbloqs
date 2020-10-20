@@ -2,6 +2,7 @@ const { useState, useEffect, useRef } = wp.element
 import styled from '@emotion/styled'
 
 import { useReplace100vh } from '../hooks/usereplace100vh'
+import { wait } from '../shared'
 
 export const Structure = ({ attributes, gutenberg }) => {
   // to show the cards as a height percentage, with a max-height though (for mobile then)
@@ -21,39 +22,42 @@ export const Structure = ({ attributes, gutenberg }) => {
   useEffect(() => {
     // get the height of the total div, so that I can fix the height of the changing background
     setPanelHeight(panelRef.current.clientHeight)
+  }, [panelRef && panelRef.current && panelRef.current.clientHeight])
 
-    // about changing background color
-    // set the initial position since it will change when they stick to the top
-    const offSet = 500
-    const initial_positions = [
-      parseInt(document.getElementById('block_0_start').offsetTop + offSet),
-      parseInt(document.getElementById('block_1_start').offsetTop - offSet),
-      parseInt(document.getElementById('block_2_start').offsetTop - offSet),
-      parseInt(document.getElementById('block_3_start').offsetTop - offSet),
-      parseInt(document.getElementById('block_4_start').offsetTop - offSet),
-    ]
+  useEffect(() => {
+    ;(async () => {
+      await wait(200)
+      const observer = new IntersectionObserver(
+        (entries, observer) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const position =
+                entry.target.id === 'block_0_start'
+                  ? 0
+                  : entry.target.id === 'block_1_start'
+                  ? 1
+                  : entry.target.id === 'block_2_start'
+                  ? 2
+                  : entry.target.id === 'block_3_start'
+                  ? 3
+                  : 4
+              setBackground({ position: position, color: backgrounds[position] })
+            }
+          })
+        },
+        {
+          root: null,
+          rootMargin: '-20px 20px -20px 20px',
+          threshold: [0.2, 0.8],
+        }
+      )
 
-    let recreated_background = background
-    window.addEventListener('scroll', e => {
-      const position =
-        window.scrollY > initial_positions[4]
-          ? 4
-          : window.scrollY > initial_positions[3]
-          ? 3
-          : window.scrollY > initial_positions[2]
-          ? 2
-          : window.scrollY > initial_positions[1]
-          ? 1
-          : window.scrollY >= initial_positions[0]
-          ? 0
-          : 0
-
-      if (recreated_background.position !== position) {
-        setBackground({ position: position, color: backgrounds[position] })
-        // the state is not available within this scope, so I recreate it here
-        recreated_background = { position: position, color: backgrounds[position] }
-      }
-    })
+      observer.observe(document.getElementById('block_0_start'))
+      observer.observe(document.getElementById('block_1_start'))
+      observer.observe(document.getElementById('block_2_start'))
+      observer.observe(document.getElementById('block_3_start'))
+      observer.observe(document.getElementById('block_4_start'))
+    })()
 
     return () => {}
   }, [])
@@ -61,7 +65,13 @@ export const Structure = ({ attributes, gutenberg }) => {
   return (
     <Wrap ref={panelRef}>
       {!gutenberg && <Background background={background} panelHeight={panelHeight} />}
-      <Div onClick={() => (window.location = '/')} bg="#f3ba51" stick={stick[0]} id="block_0_start">
+      <Div
+        style={{ marginTop: '200px' }}
+        onClick={() => (window.location = '/')}
+        bg="#f3ba51"
+        stick={stick[0]}
+        id="block_0_start"
+      >
         <h1>{text_0}</h1>
       </Div>
       <Div bg="#f36451" stick={stick[1]} id="block_1_start">
@@ -94,7 +104,7 @@ const Background = styled.div`
   width: 100%;
 
   height: ${props => props.panelHeight}px;
-  margin: 5px;
+  padding-top: 200px;
 `
 
 const Wrap = styled.div`
