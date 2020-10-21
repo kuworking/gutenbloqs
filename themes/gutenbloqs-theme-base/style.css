@@ -1,0 +1,13 @@
+/*
+ * Theme Name: gutenbloqs-theme-base
+ * Description: gutenbloqs-theme-base
+ * Author: Kuworking
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300&display=swap');
+
+body {
+  overflow: auto;
+  margin: 0;
+}

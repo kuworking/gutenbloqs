@@ -1,0 +1,15 @@
+{
+  "name": "gutenbloqs/theme-base",
+  "description": "gutenbloqs-theme-base",
+  "type":"wordpress-theme",
+  "minimum-stability" : "stable",
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://wpackagist.org"
+    }
+  ],
+  "require": {
+	  "timber/timber": "1.*"
+  }
+}
