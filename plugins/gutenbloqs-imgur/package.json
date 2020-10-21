@@ -1,6 +1,6 @@
 {
   "name": "gutenbloqs-imgur",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": " gutenbloqs-imgur",
   "main": "index.js",
   "author": "kuworking.com",
@@ -8,14 +8,11 @@
   "devDependencies": {
     "@babel/core": "7.12.1",
     "@babel/plugin-proposal-class-properties": "7.12.1",
-    "@babel/preset-react": "7.12.1",
     "@wordpress/babel-preset-default": "4.19.0",
     "@wordpress/scripts": "12.3.0",
     "archiver": "5.0.2",
     "babel-eslint": "10.1.0",
-    "babel-loader": "8.1.0",
     "babel-plugin-emotion": "10.0.33",
-    "css-loader": "5.0.0",
     "eslint": "7.2.0",
     "eslint-config-prettier": "6.11.0",
     "eslint-config-standard": "14.1.1",
