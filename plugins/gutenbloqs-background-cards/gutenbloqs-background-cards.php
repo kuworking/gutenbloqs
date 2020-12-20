@@ -50,7 +50,7 @@ add_filter('block_categories', function ($categories, $post) {
 add_action('enqueue_block_editor_assets', function () {
     $g = new Globals;
 
-    $asset_file = include ($g->local_route('build/gutenberg.asset.php'));
+    $asset_file = include($g->local_route('build/gutenberg.asset.php'));
     wp_enqueue_script(
         $g->name . '_gutenberg',
         $g->http_route('build/gutenberg.js'),
@@ -61,25 +61,24 @@ add_action('enqueue_block_editor_assets', function () {
 });
 
 /** frontend part */
-add_action('wp_enqueue_scripts', function () {
+add_action('enqueue_block_assets', function () {
     $g = new Globals;
 
-    $asset_file = include ($g->local_route('build/component.asset.php'));
-    wp_enqueue_script(
-        $g->name . '_component',
-        $g->http_route('build/component.js'),
-        // ['wp-polyfill', 'wp-element'],
-        // dependencies doesn't work when using babel emotion plugin
-        $asset_file['dependencies'],
-        $asset_file['version'],
-        true
-    );
-});
+    // only if the page uses the block
+    if (!is_home() && has_block('gutenbloqs/background-cards')) {
+        $asset_file = include($g->local_route('build/component.asset.php'));
+        wp_enqueue_script(
+            $g->name . '_component',
+            $g->http_route('build/component.js'),
+            // ['wp-polyfill', 'wp-element'],
+            // dependencies doesn't work when using babel emotion plugin
+            $asset_file['dependencies'],
+            $asset_file['version'],
+            true
+        );
 
-/** add style to override max-width theme class */
-add_action('wp_enqueue_scripts', function () {
-    $g = new Globals;
-
-    wp_register_style('custom-styles', $g->http_route('/src/base.css'));
-    wp_enqueue_style('custom-styles');
+        /** add style to override max-width theme class */
+        wp_register_style('custom-styles', $g->http_route('/src/base.css'));
+        wp_enqueue_style('custom-styles');
+    }
 });

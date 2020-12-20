@@ -1,6 +1,6 @@
 {
   "name": "gutenbloqs-page-text",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": " gutenbloqs-page-text",
   "main": "index.js",
   "author": "kuworking.com",
@@ -24,7 +24,10 @@
     "eslint-plugin-standard": "4.0.1",
     "file-loader": "6.1.1",
     "prettier": "2.0.5",
-    "prettier-plugin-twig-melody": "0.4.6"
+    "prettier-plugin-twig-melody": "0.4.6",
+    "npm-run-all": "4.1.5",
+    "cross-env": "7.0.2",
+    "fs-extra": "9.0.1"
   },
   "dependencies": {
     "@emotion/core": "10.0.35",
@@ -32,7 +35,8 @@
   },
   "scripts": {
     "start": "wp-scripts start",
-    "build": "wp-scripts build",
-    "zip": "node zip.js"
+    "buildi": "cross-env NODE_ENV=production  wp-scripts build",
+    "zip": "node zip.js",
+    "build": "npm-run-all buildi zip"
   }
 }
