@@ -76,9 +76,5 @@ add_action('enqueue_block_assets', function () {
             $asset_file['version'],
             true
         );
-
-        /** add style to override max-width theme class */
-        wp_register_style('custom-styles', $g->http_route('/src/base.css'));
-        wp_enqueue_style('custom-styles');
     }
 });
