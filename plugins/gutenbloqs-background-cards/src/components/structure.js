@@ -112,6 +112,10 @@ const Wrap = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 20px;
+  ${q(550)} {
+    padding: 0px;
+  }
 `
 
 const Space = styled.div`
@@ -153,7 +157,7 @@ const Div = styled.div`
     font-family: 'Londrina Solid', cursive;
     color: #fff;
     text-align: center;
-    font-size: 70px;
+    font-size: 30px;
     ${q(500)} {
       font-size: 100px;
     }
