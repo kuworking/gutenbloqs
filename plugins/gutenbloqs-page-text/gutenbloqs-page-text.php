@@ -3,7 +3,7 @@
 /**
  * Plugin Name:       gutenbloqs-page-text
  * Description:       A gutenbloq
- * Version:           0.0.1
+ * Version:           0.2.0
  * Author:            kuworking
  * Author URI:        https://www.gutenbloqs.com
  */
