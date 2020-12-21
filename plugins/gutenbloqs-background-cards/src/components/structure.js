@@ -65,13 +65,7 @@ export const Structure = ({ attributes, gutenberg }) => {
   return (
     <Wrap ref={panelRef}>
       {!gutenberg && <Background background={background} panelHeight={panelHeight} />}
-      <Div
-        style={{ marginTop: '200px' }}
-        onClick={() => (window.location = '/')}
-        bg="#f3ba51"
-        stick={stick[0]}
-        id="block_0_start"
-      >
+      <Div bg="#f3ba51" stick={stick[0]} id="block_0_start">
         <h1>{text_0}</h1>
       </Div>
       <Div bg="#f36451" stick={stick[1]} id="block_1_start">
