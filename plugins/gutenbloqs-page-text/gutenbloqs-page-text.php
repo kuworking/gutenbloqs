@@ -8,7 +8,7 @@
  * Author URI:        https://www.gutenbloqs.com
  */
 
-namespace GutenBloqs\Base;
+namespace GutenBloqs\PageText;
 
 class Globals
 {
