@@ -4,12 +4,12 @@ import styled from '@emotion/styled'
 
 import { HallGutenberg } from './hall'
 
-// change the theme folder name if needed
-const folder = '/wp-content/plugins/gutenbloqs-imgur/static'
-
 registerBlockType('gutenbloqs/background-imgur', {
   title: 'Imgur',
-  icon: <img src={folder + '/imgur.svg'} />,
+  icon: {
+    src: <img src="/wp-content/plugins/gutenbloqs-imgur/static/gutenbloqs-imgur.jpg" />,
+    background: '#eaeaea',
+  },
   category: 'gutenbloqs',
   attributes: {
     tag: { type: 'string', default: null },

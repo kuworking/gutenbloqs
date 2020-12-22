@@ -9,7 +9,10 @@ const folder = '/wp-content/plugins/gutenbloqs-background-cards/static'
 
 registerBlockType('gutenbloqs/background-cards', {
   title: 'Background Cards',
-  icon: <img src={folder + '/cards.svg'} />,
+  icon: {
+    src: <img src="/wp-content/plugins/gutenbloqs-background-cards/static/gutenbloqs-background-cards.jpg" />,
+    background: '#eaeaea',
+  },
   category: 'gutenbloqs',
   attributes: {
     text_0: { type: 'string', default: '' },

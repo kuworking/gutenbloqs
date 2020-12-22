@@ -12,7 +12,10 @@ const title = 'Page Text'
 
 registerBlockType(blockType, {
   title: title,
-  icon: <img src={folder + '/pagetext.jpg'} />,
+  icon: {
+    src: <img src="/wp-content/plugins/gutenbloqs-page-text/static/gutenbloqs-page-text.jpg" />,
+    background: '#eaeaea',
+  },
   category: 'gutenbloqs',
   attributes: {
     folder: { type: 'string', default: null },
